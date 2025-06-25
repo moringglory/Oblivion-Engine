@@ -1,0 +1,189 @@
+{
+	"type":"ItemTurret",//类型:消耗物品的炮塔
+	"name":"疾驰",//名字
+    "description":"快速向敌人发射高伤害子弹",//介绍
+	"size":2,//物品面积
+	"health":12800,//建筑血量
+	"ammoPerShot":1,//每发弹药
+	"range":400,//攻击范围
+	"reload":60,//攻击速度（每多少帧射击一次）(一秒60帧)
+	"inaccuracy":2,//误差(度)
+	"ammoPerShot":1,//每发子弹消耗的子弹数量
+	"ammoUseEffect": "casing2",//弹壳
+	"rotatespeed":25,//旋转速度
+	"maxAmmo":60,//最大弹药
+	"targetAir":true,//攻击天空
+	"targetGround":true,//攻击地面
+    "minWarmup": 0.9,//预热百分比
+    "warmupMaintainTime": 2.5,//预热时间
+	"coolantMultiplier":2,//冷冻液乘数
+	"heatColor":"#FFE25C",
+    "consumes":
+    {
+        "coolant": {
+        "amount":0.1,//每秒消耗液体数量是这个数字的60倍
+        "optional": true//不要液体是否可以开火
+        },
+        "power": 17
+    },
+	"shoot": 
+	{    "shots": 1,//每次发射的子弹数量
+        "type": "ShootBarrel",
+        "barrels": 
+        [
+            -3,-2.5,0,
+            3,-2.5,0
+        ]
+    },
+    	"drawer": {
+	    "type": "DrawTurret",
+        "parts": [{
+            "type": "HaloPart",
+            "hollow": false,//空心
+            "mirror": false,//是 否镜像
+            "tri": false,//是否三角形
+            "x": 0,
+            "y": 0,
+            "shapeRotation": 0,//图形初始角度
+            "moveX": 0,//移动
+            "moveY": 0,//移动
+            "shapeMoveRot": 0,//形状移动?
+            "shapes": 12,//围绕个数
+            "sides": 5,//边数
+            "radius": 3,//半径/粗细
+            "radiusTo": -1,
+            "stroke": 1,//粗细
+            "strokeTo": 0,
+            "haloRadius": 0,//围绕半径
+            "haloRadiusTo": 50,//最终围绕半径
+            "haloRotateSpeed": 300,//公转速度
+            "haloRotation": 0,//环初始角度
+            "rotateSpeed": 3,//自转速度
+            "color": "#8AA3E0",
+            "colorTo": "E0FFFF",
+            "layer": 110
+               },
+               {//6
+            "type": "HaloPart",
+            "hollow": true,//空心
+            "mirror": false,//是 否镜像
+            "tri": false,//是否三角形
+            "x": 0,
+            "y": -20,
+            "shapeRotation": 0,//图形初始角度
+            "moveX": 0,//移动
+            "moveY": 0,//移动
+            "shapeMoveRot": 0,//形状移动?
+            "shapes": 4,//围绕个数
+            "sides": 6,//边数
+            "radius": 1.5,//半径/粗细
+            "stroke": 0,//粗细
+            "strokeTo": 0.8,
+            "haloRadius": 0,//围绕半径
+            "haloRadiusTo": 6,//最终围绕半径
+            "haloRotateSpeed": 3,//公转速度
+            "haloRotation": 0,//环初始角度
+            "rotateSpeed": 2,//自转速度
+            "color": "#CAA64C",
+            "colorTo": "#FFE25C",
+            "layer": 110
+               },
+               {//3
+            "type": "HaloPart",
+            "hollow": true,//空心
+            "mirror": true,//是 否镜像
+            "tri": true,//是否三角形
+            "x": 0,
+            "y": -20,
+            "shapeRotation": 0,//图形初始角度
+            "moveX": 0,//移动
+            "moveY": 0,//移动
+            "shapeMoveRot": 0,//形状移动?
+            "shapes": 4,//围绕个数
+            "sides": 5,//边数
+            "radius": 3,//半径/粗细
+            "radiusTo": -1,
+            "stroke": 1,//粗细
+            "strokeTo": -1,
+            "triLength": 0,//初始长度
+            "triLengthTo": 6,//最终长度
+            "haloRadius": 15,//围绕半径
+            "haloRadiusTo": -1,//最终围绕半径
+            "haloRotateSpeed": 1,//公转速度
+            "haloRotation": 0,//环初始角度
+            "rotateSpeed": 1,//自转速度
+            "color": "5F9EA0",
+            "colorTo": "E0FFFF",
+            "layer": 110
+                }]},
+	"ammoTypes":{
+		"surge-alloy": {//消耗的弹药
+		    "pierceCap":20,//穿透
+		    "reloadMultiplier":10,//射击速率
+			"speed": 6,//子弹速度（输入数字×8）
+			"damage": 1350,//伤害
+			"knockback":0.1,//击退
+			"lifetime":67.5,//弹药存在时间（帧）
+			"width": 6,//子弹宽度
+			"height": 7,//子弹长度
+			"ammoMultiplier":10,//装填倍数
+			"shootEffect": "shootBig", 	//特效
+            "backColor": "#CAA64C",//（子弹外围颜色）
+            "frontColor": "#FFE25C",//（子弹中心颜色)
+            "lightningColor": "E0FFFF",//（击中产生闪电颜色)
+            "lightningDamage": 10,//(击中产生闪电伤害)
+            "lightning":5,//（击中产生闪电数量)
+            "lightningLength":8,//(击中产生闪电长度)
+            "status":"shocked",//(击中附加buff)
+            "statusDuration":480,//(附加buff时长，60为1秒)
+				},
+		"铀": {//消耗的弹药
+		                "pierceCap":20,//穿透
+		    "reloadMultiplier":0.5,//射击速率
+			"speed": 1.5,//子弹速度（输入数字×8）
+			"damage": 13500,//伤害
+			"knockback":0.1,//击退
+			"lifetime":270,//弹药存在时间（帧）
+			"width": 6,//子弹宽度
+			"height": 7,//子弹长度
+			"ammoMultiplier":1,//装填倍数
+			"shootEffect": "shootBig", 	//特效
+            "status":"sapped",//(击中附加buff)
+            "statusDuration":480,//(附加buff时长，60为1秒)
+            "backColor": "#4A5B21",//（子弹外围颜色）
+            "frontColor": "#BDC467"//（子弹中心颜色)
+				},
+		"plastanium": {//消耗的弹药
+		    "pierceCap":15,//穿透
+            "backColor": "#9CB664",//（子弹外围颜色）
+            "frontColor": "#EDF2A8",//（子弹中心颜色)
+		    "reloadMultiplier":5,//射击速率
+			"speed": 6,//子弹速度（输入数字×8）
+			"damage": 300,//伤害
+			"knockback":0.1,//击退
+			"lifetime":67.5,//弹药存在时间（帧）
+			"width": 6,//子弹宽度
+			"height": 7,//子弹长度
+			"ammoMultiplier":3,//装填倍数
+			"shootEffect": "shootBig" 	//特效
+				},
+		"metaglass": {//消耗的弹药
+		    "pierceCap":3,//穿透
+		    "reloadMultiplier":3,//射击速率
+			"speed": 3,//子弹速度（输入数字×8）
+			"damage": 300,//伤害
+			"knockback":4,//击退
+			"lifetime":135,//弹药存在时间（帧）
+			"width": 6,//子弹宽度
+			"height": 7,//子弹长度
+			"ammoMultiplier":2,//装填倍数
+			"shootEffect": "shootBig" 	//特效
+				}			
+},
+	"requirements": [
+     {"item":"铀","amount":200},
+     {"item":"surge-alloy","amount":500},//造价
+	 ],
+	"category": "turret",//类型
+	"research":"镭射"//科技树位置，duo为双管
+}

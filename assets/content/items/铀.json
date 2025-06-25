@@ -1,0 +1,11 @@
+{
+    "type":"material",//类型（不能改）
+    "name":"铀",//名字
+    "description":"放射性极高，是极为罕见的爆发产物",//介绍
+    "details":"放射性极高，是极为罕见的爆发产物",//战役中解锁后最底下的介绍（？）
+    "color":"114514",//物品源颜色
+    "radioactivity":2,//放射性
+    "cost":1,
+    "alwaysUnlocked":false,//总是解锁
+    "research": "核擎"//科技树中的位置
+}

@@ -1,0 +1,159 @@
+{
+	"type": "PowerTurret",//类型
+	"name": "镭射",//名字
+	"health": 640,//血量
+	"armor": 2.5,//护甲
+	"size": 2,//边长
+    "accurateDelay": false,//射击旋转偏移(参考死星)
+	"shake": 15,//屏幕震动
+	"inaccuracy": 0,//射击精准度
+	"recoil": 5,//后坐力
+	"cooldownTime": 30,//每次射击间隔冷却
+	"liquidCapacity": 60,//炮台液体容量
+	"canOverdrive": true,//支持超速
+	"recoilTime": 12,//后坐力恢复时间
+	"shootSound": "release",
+	"warmupMaintainTime": 15,//预热时间
+	"shoot": {
+		"type": "ShootPattern",
+		"firstShotDelay": 50//首次射击延迟时间
+	},
+	"coolantMultiplier": 1,//冷冻液乘数
+	"heatColor": "#E0F0E9",//伤害颜色
+	//"shootSound": "sounds-JG1.ogg",
+	"shootType": {
+        "parts": [
+				{
+					"type": "ShapePart",
+					"color": "E0F0E9",//圆圈特效颜色
+					"mirror": true,//镜像
+					"sides": 6,//边数
+					"rotateSpeed": 3,//自转速度
+					//"circle": true,//圆
+					"hollow": true,//空心
+					"layer": 100,//上下层优先级
+					"stroke": 0,//粗细
+					"strokeTo": 3,
+					"radius": 150,//半径
+					"radiusTo": 7
+				}
+		],
+		"backColor": "#E0F0E9",//（子弹外围颜色）
+        "frontColor": "#EDF2A8",//（子弹中心颜色)
+        "hitSound": "laser",
+        "damage":2048,//伤害
+		//"splashDamageRadius": 60,
+		//"splashDamage": 223,
+		"trailLength": 24,//留下的轨迹长度
+		"trailWidth": 3,//留下的轨迹宽度
+		"trailColor": "E0FFFF",//轨迹颜色
+		"speed": 3,//子弹飞行速度
+		"lifetime": 120,//存在时间
+		"width": 16,//子弹宽度
+		"height": 18,//子弹长度
+		"fragBullts":10,// (分裂子弹数量)
+        //"fragLifeMin":10,// (分 裂子弹的最小存在时间)
+        //"fragLife":25,// (分 裂子弹的最小存在时间)
+        "fragRandomSpread":30,// (随 机分裂角度)
+        "fragSpread":45,// (起始分裂角度)
+        "fragVelocityMin":0.5,// (最小分裂弹速度)
+        "fragVelocityMax":3,// (最大分裂弹速度)
+        "fragBullet":{//分裂子弹属性
+        "Type":"BasicBulletType"
+        "backColor": "#E0F0E9",//（子弹外围颜色）
+        "frontColor": "#EDF2A8",//（子弹中心颜色)
+        "width": 16,//子弹宽度
+	    "height": 18,//子弹长度
+		"damage":512,//伤害
+		"lifetime": 75,//存在时间
+		"trailLength": 24,//留下的轨迹长度
+		"trailWidth": 3,//留下的轨迹宽度
+		//"hitSound": "laser",
+		"trailColor": "#C0F0D0",//轨迹颜色
+        "parts": [
+				{
+					"type": "ShapePart",
+					"color": "5F9EA0",//圆圈特效颜色
+					"mirror": true,//镜像
+					"sides": 6,//边数
+					"rotateSpeed": 3,//自转速度
+					//"circle": true,//圆
+					"hollow": true,//空心
+					"layer": 1,//上下层优先级
+					"stroke": 0,//粗细
+					"strokeTo": 1,
+					"radius": 20,//半径
+					"radiusTo": 7
+				}
+		]
+        }
+		"hitEffect": 
+		{
+		"type": "MultiEffect",//多重子弹效果
+		"effects": [
+				{
+				    "type": "ParticleEffect",
+				    "particles": 33,//粒子
+				    "sizeFrom": 1.5,//粒子大小
+				    "sizeTo": 0,
+			    	"length": 160,//粒子轨迹长度
+				    "baseLength": 8,
+				    "lifetime": 100,//效果存在时间
+				    "interp": "fastSlow",//效果(此为变慢)
+				     "sizeInterp": "pow3In",//变化差值
+				     "colorFrom": "76D081",
+				     "colorTo": "76D081"
+		    	},
+		    	{
+		    	    
+				    "type": "ParticleEffect",
+				    "particles": 10,//粒子
+				    "sizeFrom": 13,//粒子大小
+				    "sizeTo": 0,
+			    	"length": 160,//粒子轨迹长度
+				    "baseLength": 8,
+				    "lifetime": 120,//效果存在时间
+				    "interp": "fastSlow",//效果(此为变慢)
+				     "sizeInterp": "pow3In",//变化差值
+				     "colorFrom": "76D091",
+				     "colorTo": "76D081"
+				}
+		    	
+		    	
+	        ]
+		}
+    },
+    "drawer": {
+	    "type": "DrawTurret",
+        "parts": [{    
+				"type": "ShapePart",
+				"color": "E0F0E9",//圆圈特效颜色
+				"colorTo":"C0F0D0"
+				"mirror": true,//镜像
+				"sides": 4,//边数
+				"rotateSpeed": 3,//自转速度
+				//"circle": true,//圆
+				"hollow": true,//空心
+				"layer": 100,//上下层优先级
+				"stroke": 0,//粗细
+				"strokeTo": 1,
+				"radius": 20//半径
+                }]},
+	"consumes": {
+		"power": 34,
+		"coolant":{
+            "amount":0.5,//每秒消耗液体数量是这个数字的60倍
+            "optional": false//不要液体是否可以开火
+            }
+	},
+	"reload": 160,//冷却时间
+	"homingPower":1,//（追踪强度）
+	"rotateSpeed": 1,//炮台旋转速度
+	//"fogRadiusMultiplier": 0.167,//驱雾
+	"range": 368,//感知射程
+	"category": "turret",
+	"research": "核擎",
+	"requirements": [
+		"铀/1800"
+	]
+}

@@ -1,0 +1,21 @@
+{
+	"name": "铀墙",//名字
+	"description": "三种高强度材料构成的墙，有着极高血量，并且能反弹子弹，吸收激光",//介绍
+	"type": "Wall",//类型
+	"health":400000,//血量
+	"size":2 ,//边长
+	"requirements": [
+		{ "item": "铀", "amount":64},
+        { "item": "surge-alloy", "amount":200},
+        { "item": "thorium", "amount":64},
+        { "item": "titanium", "amount":500}//造价
+	],
+	"category": "defense",//不能改
+	"research": "核擎"//科技树位置（此为铜墙）
+"absorbLasers":true,//吸收激光（塑钢墙同款）
+"deflect": true,//反弹子弹
+"chanceDeflect":100,//反弹概率（1=1%）
+"lightningChance":0//放电概率（1=100%）
+"lightningDamage":0//闪电伤害
+"lightningLength":0//闪电长度（1=?格）
+}

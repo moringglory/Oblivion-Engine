@@ -1,0 +1,131 @@
+//此代码来自无限宇宙
+const lib = require("lib");
+const {核擎} = require('核擎');
+const 渊蛰惊鸿 = new JavaAdapter(Planet, {
+    load() {
+        this.meshLoader = prov(() => new HexMesh(渊蛰惊鸿, 6));//行星网格数量 2的7次幂加一
+        this.super$load();
+    }//行星构建
+}, "渊蛰惊鸿", Planets.sun, 1);//类型:行星
+
+const c1 = Color.valueOf("#0000CD"), c2 = Color.valueOf("#228B22"), c3 = Color.valueOf("#00EE00");//行星总体颜色
+const sS = require("sectorSize");
+sS.planetGrid(渊蛰惊鸿, 3);//行星网格大小
+渊蛰惊鸿.generator = extend(SerpuloPlanetGenerator,{
+	getDefaultLoadout() {
+		return Schematics.readBase64("bXNjaAF4nGNgZWBlZmDJS8xNZWB7tmDHs8l9DNwpqcXJRZkFJZn5eQwMDGw5iUmpOcUMTNGxjAzCz3aue9649umeqUCVulANDAyMDAxMQMgAABkOGwo=");//核心蓝图，仅包含核心
+	},
+    getColor(position) {
+        var depth = Simplex.noise3d(4, 4, 0.56, 1.7, position.x, position.y, position.z) / 2;/*三维柏林噪声生成
+        变量 深度 =三维柏林噪声(坐标,1.7,xyz位置)/2 
+        建议别改*/
+        return c1.write(c3).lerp(c2, Mathf.clamp(Mathf.round(depth, 0.25)));//返回值
+    },
+});
+
+渊蛰惊鸿.atmosphereColor = Color.valueOf("#D0F5FE");//大气层颜色
+渊蛰惊鸿.landCloudColor = Color.valueOf("#D5E4FF");//云层颜色
+渊蛰惊鸿.atmosphereRadIn = 0.1;
+渊蛰惊鸿.atmosphereRadOut = 0.2;//星球大气层厚度
+渊蛰惊鸿.lightSrcTo = 1;//区块光照变化
+渊蛰惊鸿.lightDstFrom  = 1;//大气层
+渊蛰惊鸿.localizedName = "渊蛰惊鸿";//行星名
+渊蛰惊鸿.visible = true;//星球是否可见
+渊蛰惊鸿.bloom = true;//
+渊蛰惊鸿.updateLighting = true;//区块的昼夜交替
+渊蛰惊鸿.accessible = true;//星球是否可以到达
+渊蛰惊鸿.launchCapacityMultiplier = 1;//发射核心时最大可携带的资源量，"1"为发射的核心的100%容量，0.5为50%
+渊蛰惊鸿.allowLaunchSchematics = true;//开启发射核心蓝图
+渊蛰惊鸿.description = "这里貌似资源丰富，有多个阵营来到抢夺资源";//星球介绍
+渊蛰惊鸿.allowSectorInvasion = true;//模拟攻击图入侵
+渊蛰惊鸿.allowWaveSimulation = true;//模拟后台波次
+渊蛰惊鸿.alwaysUnlocked = true;//默认解锁
+渊蛰惊鸿.clearSectorOnLose = false;//失败后清空你的建筑
+渊蛰惊鸿.allowLaunchLoadout = true;//允许带资源发射核心
+渊蛰惊鸿.startSector = 180;//星球起始公转方向(相对于太阳，1~360随便填)
+渊蛰惊鸿.orbitRadius = 40;//星球轨道半径
+渊蛰惊鸿.tidalLock = false//星球潮汐锁定
+渊蛰惊鸿.iconColor = Color.valueOf("#D5E4FF");//图标颜色
+渊蛰惊鸿.rotateTime = 200;//星球自转一周的时间
+渊蛰惊鸿.defaultCore= 核擎//默认发射核心
+
+exports.渊蛰惊鸿 = 渊蛰惊鸿
+
+const 尘霾工巢 = new SectorPreset("尘霾工巢", 渊蛰惊鸿, 180);
+尘霾工巢.alwaysUnlocked = true;
+尘霾工巢.difficulty = 1;
+尘霾工巢.captureWave = 10;
+尘霾工巢.description = "防守薄弱的地方，最适合攻破突袭";
+尘霾工巢.localizedName = "尘霾工巢";
+Events.on(ContentInitEvent, (e) => {
+    lib.addToResearch(尘霾工巢, {
+        parent: '核擎'
+        })
+    });
+exports.尘霾工巢 = 尘霾工巢
+
+const map2 = new SectorPreset("冗余堡垒", 渊蛰惊鸿, 0);
+map2.alwaysUnlocked = true;//默认解锁此区块
+map2.difficulty = 3;//难度
+map2.captureWave = 20;//敌人波数
+map2.description = "戒备森严，大量的货物存放在这";//统计资料顶上的简介
+map2.localizedName = "冗余堡垒";//区块名
+Events.on(ContentInitEvent, (e) => {
+    lib.addToResearch(map2, {
+        parent: '尘霾工巢',
+        objectives: Seq.with(
+        new Objectives.SectorComplete(尘霾工巢),
+        )
+        });
+});
+exports.map2 = map2//地图排序
+
+/*
+const map2 = new SectorPreset("冗余堡垒", 渊蛰惊鸿, 23);
+map2.alwaysUnlocked = false;//默认解锁此区块
+map2.difficulty = 3;//难度
+map2.captureWave = 20;//敌人波数
+map2.description = "开始真正的第一战";//统计资料顶上的简介
+map2.localizedName = "冗余堡垒";//区块名
+Events.on(ContentInitEvent, (e) => {
+    lib.addToResearch(map2, {
+        parent: '沿海峡谷',
+        objectives: Seq.with(
+            new Objectives.SectorComplete(沿海峡谷),
+            )
+    });
+});
+exports.map2 = map2//地图排序
+
+const map3 = new SectorPreset("热熔塌陷湖", 渊蛰惊鸿, 105);
+map3.alwaysUnlocked = false;//默认解锁此区块
+map3.difficulty = 2;//难度
+map3.captureWave = 45;//敌人波数
+map3.description = "占领这里，发展地热能";//统计资料顶上的简介
+map3.localizedName = "热熔塌陷湖";//区块名
+Events.on(ContentInitEvent, (e) => {
+    lib.addToResearch(map3, {
+        parent: '沿海峡谷',
+        objectives: Seq.with(
+            new Objectives.SectorComplete(沿海峡谷),
+            )
+    })
+});
+exports.map3 = map3//地图排序
+
+const map4 = new SectorPreset("36号战区", 渊蛰惊鸿, 36);
+map4.alwaysUnlocked = false;//默认解锁此区块
+map4.difficulty = 3;//难度
+map4.captureWave = 15;//敌人波数
+map4.description = "敌人盯上了这片土地，我们的友军撤退前留下了一些废墟利用废墟，坚守这里";//统计资料顶上的简介
+map4.localizedName = "36号战区";//区块名
+Events.on(ContentInitEvent, (e) => {
+    lib.addToResearch(map4, {
+        parent: '热熔塌陷湖',
+        objectives: Seq.with(
+            new Objectives.SectorComplete(map3),
+            )
+    })
+});
+exports.map4 = map4//地图排序
+*/

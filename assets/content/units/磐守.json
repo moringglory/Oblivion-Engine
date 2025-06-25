@@ -1,0 +1,61 @@
+{
+    "coreUnitDock": true,
+    "trailLength": 2,
+    "payloadCapacity": 300,
+    "mineSpeed": 10,
+    "mineTier": 3,
+    "buildSpeed": 4.5,
+    "speed": 5,
+    "health": 420,
+    "targetGround": true,
+    "name": "磐守",
+    "armor": 2,
+    "type": "payload",
+    "description": "test",
+    "rotateSpeed": 6,
+    "ammoCapacity": 200,
+    "flying": true,
+    "hitSize": 20,
+    "targetAir": false,
+    "itemCapacity": 120,
+    "engineOffset": 10,
+    "engineSize": 4,
+    "weapons": [
+        {
+            "name": "德尔塔",
+            "reload": 7,
+            "x": 2.5,
+            "y": 7,
+            "rotate": true,
+            "inaccuracy": 0,
+            "shootSound": "pew",
+            "alternate": true,
+            "ejectEffect": "casing1",
+            "bullet": {
+                "buildingDamageMultiplier": 2,
+                "damage": 16,
+                "speed": 10,
+                "lifetime": 32,
+                "width": 7,
+                "height": 10
+            },
+            "name": "伊普西龙",
+            "reload": 7,
+            "x": 0,
+            "y": -2,
+            "rotate": true,
+            "inaccuracy": 0,
+            "shootSound": "pew",
+            "alternate": true,
+            "ejectEffect": "casing1",
+            "bullet": {
+                "buildingDamageMultiplier": 1,
+                "damage": 16,
+                "speed": 10,
+                "lifetime": 32,
+                "width": 7,
+                "height": 10
+            }
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "name": "核擎",
+    "description": "核心，使用了多种高强度材料，容量大，坚固",
+    "armor": 0,
+    "itemCapacity": 500000,
+    "hasItems": true,
+    "health": 100000,
+    "unitCapModifier": 15,
+    "size": 5,
+    "breakable": true,
+    "requirements": [
+        {
+            "item": "copper",
+            "amount": 3000
+        },
+        {
+            "item": "lead",
+            "amount": 3000
+        }
+    ],
+    "unitType": "mega",
+    "category": "effect",
+    "alwaysUnlocked": true
+}
